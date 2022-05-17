@@ -2,7 +2,7 @@
 require('../src/init.php');
 
 $router->addNotFoundHandler(function () {
-  require_once __DIR__ . "/errors/404.php";
+  require_once __DIR__ . "/errors/404.html";
 });
 
 $router->get("/", function () {

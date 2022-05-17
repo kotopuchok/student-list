@@ -23,6 +23,6 @@ try {
 } catch (Exception $e) {
   error_log($e->__toString());
   header("HTTP/1.0 503 Temporary unavailable");
-  require_once(__DIR__ . '/../../public/errors/503.php');
+  require_once(__DIR__ . '/../../public/errors/503.html');
   die();
 }
