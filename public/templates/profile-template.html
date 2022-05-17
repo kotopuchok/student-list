@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Регистрация абитуриента</title>
+	<link rel="stylesheet" href="../_static/css/bootstrap/bootstrap.min.css" />
+	<link rel="stylesheet" href="../_static/css/style.css" />
+</head>
+
+<body>
+	<header>
+		<nav>
+			<a href="/">
+				На главную
+			</a>
+		</nav>
+		<div class="header-container">
+			<?php if (in_array($password, $passes)) : ?>
+				<h1>Редактирование данных абитуриента</h1>
+			<?php else : ?>
+				<h1>Регистрация абитуриента</h1>
+			<?php endif; ?>
+		</div>
+	</header>
+	<main>
+		<form action="/profile" method="post">
+			<div class="form-group">
+				<label for="name">Имя: </label>
+				<input type="text" class="form-control" name="name" id="name" value="<?= $student->getName() ?>" required />
+				<?php if ($_SERVER['REQUEST_METHOD'] == 'POST' && $errors['name_errors']) : ?>
+					<?php foreach ($errors['name_errors'] as $error) : ?>
+						<small class="error"> <?= $error ?></small><br>
+					<?php endforeach; ?>
+				<?php endif; ?>
+			</div>
+			<div class="form-group">
+				<label for="surname">Фамилия: </label>
+				<input type="text" class="form-control" name="surname" id="surname" value="<?= $student->getSurname() ?>" required />
+				<?php if ($_SERVER['REQUEST_METHOD'] == 'POST' && $errors['surname_errors']) : ?>
+					<?php foreach ($errors['surname_errors'] as $error) : ?>
+						<small class="error"> <?= $error ?></small><br>
+					<?php endforeach; ?>
+				<?php endif; ?>
+			</div>
+			<div class="form-group">
+				<label for="sex">Пол: </label>
+				<select class="form-control" name="sex" id="sex" required>
+					<option disabled selected>----</option>
+					<?php foreach ($sexArray as $key => $value) : ?>
+						<?php if ($value == $student->getSex()) : ?>
+							<?= '<option selected value=' . $value . '>' . $key . '</option>' ?>
+						<?php else : ?>
+							<?= '<option value=' . $value . '>' . $key . '</option>' ?>
+						<?php endif; ?>
+					<?php endforeach; ?>
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="group">Группа: </label>
+				<select class="form-control" name="group" id="group" required>
+					<option disabled selected>----</option>
+					<?php foreach ($groupArray as $key => $value) : ?>
+						<?php if ($value == $student->getGroup()) : ?>
+							<?= '<option selected value=' . $value . '>' . $value . '</option>' ?>
+						<?php else : ?>
+							<?= '<option value=' . $value . '>' . $value . '</option>' ?>
+						<?php endif; ?>
+					<?php endforeach; ?>
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="email">Email: </label>
+				<input type="email" class="form-control" name="email" id="email" value="<?= $student->getEmail() ?>" required />
+				<?php if ($_SERVER['REQUEST_METHOD'] == 'POST' && $errors['email_errors']) : ?>
+					<?php foreach ($errors['email_errors'] as $error) : ?>
+						<small class="error"> <?= $error ?></small><br>
+					<?php endforeach; ?>
+				<?php endif; ?>
+			</div>
+			<div class="form-group">
+				<label for="points">Количество баллов: </label>
+				<input type="number" class="form-control" min="170" max="300" name="points" id="points" value="<?= $student->getPoints() ?>" required />
+			</div>
+			<div class="form-group">
+				<label for="birthdate"></label>Дата рождения:
+				<input type="date" min="1970-01-01" max="2004-12-31" class="form-control" name="birthdate" id="birthdate" value="<?= $student->getBirthdate() ?>" required />
+			</div>
+			<div class="form-group">
+				<label for="origin">Место регистрации: </label>
+				<select class="form-control" name="origin" id="origin" required>
+					<option disabled selected>----</option>
+					<?php foreach ($originArray as $key => $value) : ?>
+						<?php if ($value == $student->getOrigin()) : ?>
+							<?= '<option selected value=' . $value . '>' . $key . '</option>' ?>
+						<?php else : ?>
+							<?= '<option value=' . $value . '>' . $key . '</option>' ?>
+						<?php endif; ?>
+					<?php endforeach; ?>
+				</select>
+			</div>
+			<div>
+				<input type="hidden" name="password" value="<?= htmlspecialchars($password, ENT_QUOTES) ?>">
+			</div>
+			<div>
+				<button type="submit" class="btn btn-primary">Отправить</button>
+			</div>
+		</form>
+	</main>
+
+</body>
+
+</html>

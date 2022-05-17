@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Список студентов</title>
+	<link rel="stylesheet" href="../_static/css/bootstrap/bootstrap.min.css" />
+	<link rel="stylesheet" href="../_static/css/style.css">
+</head>
+
+<body>
+	<header>
+		<nav>
+			<?php if ($password != '' && in_array($password, $passes)) : ?>
+				<a href="/profile" class="edit">
+					Редактировать данные
+				</a>
+			<?php else : ?>
+				<a href="/profile" class="registration">
+					Регистрация
+				</a>
+			<?php endif; ?>
+		</nav>
+		<div class="header-container">
+			<?php if ($search == '') : ?>
+				<h1>Список абитуриентов</h1>
+			<?php else : ?>
+				<h1>Поиск абитуриентов</h1>
+			<?php endif; ?>
+
+			<form action="/" id="search-form" class="input-group">
+				<input type="search" class="form-control" name="search" id="search" placeholder="Поиск..." value="<?= $search ?>" />
+			</form>
+		</div>
+	</header>
+	<div class="search-label">
+		<?php if ($search != '') : ?>
+			<p>Показаны только абитуриенты, найденные по запросу "<?= $search ?>"</p>
+			<p><a href="/">[Показать всех абитуриентов]</a></p>
+		<?php endif; ?>
+	</div>
+	<main>
+		<table class="table">
+			<thead class="thead">
+				<tr>
+					<th scope="col">
+						<?= $linkHelper->getSortLink('Имя', 'name_asc', 'name_desc') ?>
+					</th>
+					<th scope="col">
+						<?= $linkHelper->getSortLink('Фамилия', 'surname_asc', 'surname_desc') ?>
+					</th>
+					<th scope="col">
+						<?= $linkHelper->getSortLink('Номер группы', 'group_asc', 'group_desc') ?>
+					</th>
+					<th scope="col">
+						<?= $linkHelper->getSortLink('Баллы', 'points_asc', 'points_desc') ?>
+					</th>
+				</tr>
+			</thead>
+
+			<?php foreach ($result as $row) : ?>
+				<tr>
+					<td><?= htmlspecialchars($row->getName()) ?></td>
+					<td><?= htmlspecialchars($row->getSurname()) ?></td>
+					<td><?= htmlspecialchars($row->getGroup()) ?></td>
+					<td><?= htmlspecialchars($row->getPoints()) ?></td>
+				</tr>
+			<?php endforeach; ?>
+		</table>
+
+		<nav>
+			<p>Страницы:</p>
+			<ul>
+				<?php for ($i = 1; $i < $pageCount + 1; $i++) : ?>
+
+					<?php if ($i == $page) : ?>
+						<li>
+							<a href=" <?= $linkHelper->getPageLink($i) ?> ">
+								<?= '[' . htmlspecialchars($i) . ']' ?>
+							</a>
+						</li>
+					<?php else : ?>
+						<li>
+							<a href=" <?= $linkHelper->getPageLink($i) ?> ">
+								<?= htmlspecialchars($i) ?>
+							</a>
+						</li>
+					<?php endif; ?>
+				<?php endfor; ?>
+			</ul>
+		</nav>
+	</main>
+</body>
+
+</html>

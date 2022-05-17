@@ -1,0 +1,131 @@
+/* Layout ******************/
+
+body {
+	margin: 0;
+	padding: 0;
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: rgb(255, 255, 249);
+}
+
+header {
+	background-color: #666;
+}
+
+header nav {
+	padding: 5px 20px;
+	text-align: right;
+	background-color: #444;
+}
+
+header nav .registration {
+	color: rgb(255, 110, 110);
+}
+header nav .registration:hover {
+	color: rgb(200, 85, 85);
+	text-decoration: none;
+}
+
+header nav .edit {
+	color: rgb(110, 255, 110);
+}
+header nav .edit:hover {
+	color: rgb(85, 200, 85);
+	text-decoration: none;
+}
+
+.header-container {
+	clear: both;
+	overflow: hidden;
+	padding: 10px;
+	position: relative;
+	border-bottom: 1px solid #ccc;
+}
+
+.header-container h1 {
+	display: inline-block;
+	padding: 0;
+	margin: 10px 0;
+	color: #eee;
+}
+
+.search-label {
+	background-color: #eee;
+	overflow: hidden;
+}
+
+.search-label p {
+	padding: 0 10px;
+	margin: 10px 0;
+}
+
+main {
+	clear: both;
+	background-color: #f8f8f8;
+}
+
+main form {
+	padding-top: 5px;
+	margin: 0 10px;
+	padding-bottom: 30px;
+}
+
+main form .error {
+	color: #f55;
+}
+
+main table {
+	width: 100%;
+	box-sizing: border-box;
+	background-color: #f8f8f8 !important;
+	margin: 0 !important;
+}
+
+thead {
+	border-bottom: 3px solid #222 !important;
+}
+
+main table a {
+	color: #444;
+	border-bottom: 0.125em dashed #444;
+}
+
+main table a:hover {
+	text-decoration: none;
+	color: #666;
+}
+
+main nav {
+	background-color: #666;
+	color: #f3f3f3;
+}
+main nav p {
+	display: inline-block;
+	padding: 10px 20px;
+	margin: 0;
+}
+
+main nav ul {
+	display: inline-block;
+	padding: 0;
+	margin: 0;
+}
+
+main nav ul li {
+	display: inline-block;
+	margin: 10px;
+}
+
+main nav ul li a {
+	color: #e7e7e7;
+}
+main nav ul li a:hover {
+	color: #adadad;
+	text-decoration: none;
+}
+
+.message-container {
+	text-align: center;
+	margin-top: 10%;
+}
