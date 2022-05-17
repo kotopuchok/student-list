@@ -27,7 +27,7 @@
 
 Перейдите в /path/to/student-list/public и создайте файл `.htaccess`, который настройте следующим образом:
 
-```htaccess
+```apacheconf
 AddDefaultCharset utf-8
 
 <IfModule mod_rewrite.c>
