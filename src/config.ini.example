@@ -1,3 +1,4 @@
 [db]
 user = %username%
 password = %password%
+database = %databasename%

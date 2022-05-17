@@ -11,7 +11,9 @@ require_once('errorHandler.php');
 //pdoInit
 $dbData = $configData['db'];
 
-$dsn = 'mysql:host=localhost;dbname=students;charset=utf8';
+$database = $dbData['database'];
+
+$dsn = "mysql:host=localhost;dbname=$database;charset=utf8";
 $user = $dbData['user'];
 $password = $dbData['password'];
 
