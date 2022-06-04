@@ -29,7 +29,7 @@ class Student
     int $points,
     string $birthdate,
     string $origin,
-    string $password,
+    string $password
   ) {
     $this->student_id = $id;
     $this->student_name = $name;
