@@ -13,7 +13,7 @@
 Перейдите в папку, в которую хотите поместить проект. Клонируйте репозиторий в нее:
 
 ```sh
-  $ git clone https://github.com/kotopuchok/student-list.git
+  $ git clone https://github.com/ktpchk/student-list.git
 ```
 
 Создайте виртуальный хост для этого проекта. Пропишите в его конфиг следующее:
